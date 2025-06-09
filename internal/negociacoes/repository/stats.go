@@ -46,8 +46,6 @@ const (
     `
 )
 
-// GetStatsRepo executa as queries de agregação
-// mantém o *sql.DB pra fallback e cacheia os *sql.Stmt.
 type GetStatsRepo struct {
 	db                 *sql.DB
 	mu                 sync.Mutex
@@ -57,16 +55,13 @@ type GetStatsRepo struct {
 	volumeStmtWithFrom *sql.Stmt
 }
 
-// NewGetStatsRepository continua sem error
 func NewGetStatsRepository(db *sql.DB) *GetStatsRepo {
 	return &GetStatsRepo{db: db}
 }
 
-// Execute retorna as estatísticas; faz o prepare on-demand
 func (r *GetStatsRepo) Execute(ctx context.Context, ticker string, from *time.Time) (entity.Stats, error) {
 	var stats entity.Stats
 
-	// garante que as statements estão preparadas
 	if err := r.prepareStatements(ctx); err != nil {
 		return stats, fmt.Errorf("prepare statements: %w", err)
 	}
@@ -126,7 +121,6 @@ func (r *GetStatsRepo) prepareStatements(ctx context.Context) error {
 	return nil
 }
 
-// Close opcional, para liberar os statements se você quiser
 func (r *GetStatsRepo) Close() {
 	r.mu.Lock()
 	defer r.mu.Unlock()

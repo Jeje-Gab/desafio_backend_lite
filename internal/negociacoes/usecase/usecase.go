@@ -12,7 +12,6 @@ type service struct {
 	getStats *GetStatsUC
 }
 
-// NewService cria o usecase com as dependências.
 func NewService(negociosRepo negociacoes.Repository) negociacoes.Service {
 	return &service{
 		getStats: NewGetStatsUCsitory(negociosRepo),

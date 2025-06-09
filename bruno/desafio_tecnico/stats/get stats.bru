@@ -1,0 +1,16 @@
+meta {
+  name: get stats
+  type: http
+  seq: 1
+}
+
+get {
+  url: http://localhost:8080/api/negociacoes/stats?ticker=BOVX11
+  body: none
+  auth: inherit
+}
+
+params:query {
+  ticker: BOVX11
+  ~from: 2025-06-06
+}

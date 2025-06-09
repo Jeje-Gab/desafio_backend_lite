@@ -1,0 +1,16 @@
+.env
+*.log
+dist/
+dist-importer/
+node_modules/
+*.bak
+dump/dump/
+data-csv/
+data-csv.zip
+dump/
+dump.zip
+data-csv/
+data-csv.zip
+dump/
+dump.zip
+.idea

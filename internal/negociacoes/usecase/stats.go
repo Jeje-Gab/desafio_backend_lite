@@ -25,5 +25,6 @@ func (r *GetStatsUC) Execute(ctx context.Context, ticker string, from *time.Time
 	if err != nil {
 		return stats, err
 	}
+	stats.Ticker = ticker
 	return stats, nil
 }

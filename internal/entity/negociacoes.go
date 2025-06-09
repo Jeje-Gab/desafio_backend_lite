@@ -21,6 +21,7 @@ type Negociacao struct {
 
 // Stats agrupa os resultados de estatísticas de negociações.
 type Stats struct {
+	Ticker         string  `json:"ticker"`
 	MaxPrice       float64 `json:"max_price"`
 	MaxDailyVolume int64   `json:"max_daily_volume"`
 }
